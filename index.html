@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+	table,th,td{
+		border : 1px solid black;
+		border-collapse: collapse;
+	}
+	th,td{
+		padding: 5px;
+	}
+</style>
+<head>
+	<meta charset="UTF-8">
+	<title>Catalogo</title>
+</head>
+<body>
+	
+	<p>Mostrar la información de la pelicula.</p>
+	<p id="showPelicula"></p>
+	<table id="demo"></table>
+
+	<script>
+		var x,xmlhttp,xmlDoc;
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET", "catalogo_peliculas.xml", false);
+		xmlhttp.send();
+		xmlDoc = xmlhttp.responseXML;
+		x = xmlDoc.getElementsByTagName("PELICULA");
+		table = "<tr><th>Actores</th><th>Titulo</th></tr>";
+		for (i = 0; i <x.length; i++) {
+			table += "<tr onclick='displayPelicula(" + i + ")'><td>";
+			table += x[i].getElementsByTagName("ACTORES")[0].childNodes[0].nodeValue;
+			table += "</td><td>";
+			table += x[i].getElementsByTagName("TITULO")[0].childNodes[0].nodeValue;
+			table += "</td></tr>";
+		}
+		document.getElementById("demo").innerHTML = table;
+
+        /**
+		 * Funcion para mostrar peliculas
+         * @param i
+         */
+		function displayPelicula(i){
+		    // Recoge cada valor del XML en una constante
+			const actores = x[i].getElementsByTagName("ACTORES")[0].childNodes[0].nodeValue;
+			const titulo = x[i].getElementsByTagName("TITULO")[0].childNodes[0].nodeValue;
+			const ano = x[i].getElementsByTagName("AÑO")[0].childNodes[0].nodeValue;
+			const nacionalidad = x[i].getElementsByTagName("NACIONALIDAD")[0].childNodes[0].nodeValue;
+			const genero = x[i].getElementsByTagName("GENERO")[0].childNodes[0].nodeValue;
+			const directores = x[i].getElementsByTagName("DIRECTORES")[0].childNodes[0].nodeValue;
+			const clasificacion = x[i].getElementsByTagName("CLASIFICACION")[0].childNodes[0].nodeValue;
+			const imagen = x[i].getElementsByTagName("IMAGEN")[0].childNodes[0].nodeValue;
+
+			// Armas el texto
+			let textBody = `Actores: ${actores} <br /> Titulo: ${titulo} <br /> Año: ${ano} <br /> Genero: ${genero} <br /> Directores: ${directores} <br /> Clasificación: ${clasificacion} <br /> Nacionalidad: ${nacionalidad} <br /> Imagen: <img src="${imagen}" alt=${titulo}/>`
+
+			// Lo inserta en la etiqueta
+			document.getElementById("showPelicula").innerHTML = textBody;
+		}
+	</script>
+</body>
+</html>
