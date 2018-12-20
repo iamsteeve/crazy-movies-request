@@ -1,0 +1,64 @@
+@import "~materialize-css/sass/components/color-variables";
+@import "~materialize-css/sass/components/color-classes";
+/**
+ ** Variables
+ */
+
+$primary-color: color("green","darken-2");
+$primary-color-light: false;
+$primary-color-dark: false;
+@if not $primary-color-light{
+    $primary-color-light: lighten($primary-color, 15%);
+}
+@if not $primary-color-dark {
+    $primary-color-dark: darken($primary-color, 15%);
+}
+$secondary-color: #000000;
+$success-color: color("green", "base") ;
+$error-color: color("red", "base");
+
+$link-color: color("light-blue", "darken-1");
+
+// Select
+$select-border: 1px solid #f2f2f2;
+$select-background: rgba(255, 255, 255, 0.90);
+$select-focus: 1px solid lighten(#FFDC00, 47%);
+$select-option-hover: rgba(0,0,0,.08);
+$select-option-focus: rgba(0,0,0,.08);
+$select-option-selected: rgba(0,0,0,.03);
+$select-padding: 5px;
+$select-radius: 2px;
+$select-disabled-color: rgba(0,0,0,.3);
+
+// Text Inputs + Textarea
+$input-height: 3rem;
+$input-border-color: white;
+$label-font-size: 1.4rem;
+$input-border: 1px solid $input-border-color;
+$input-background: #fff;
+$input-error-color: $error-color;
+$input-success-color: $success-color;
+$input-focus-color: #FFDC00;
+$input-font-size: 16px;
+$input-margin-bottom: 8px;
+$input-margin: 0 0 $input-margin-bottom 0;
+$input-padding: 0;
+$input-disabled-color: rgba(0,0,0, .42);
+$input-disabled-solid-color: #949494;
+$input-disabled-border: 1px dotted $input-disabled-color;
+$input-invalid-border: 1px solid $input-error-color;
+$input-icon-size: 2rem;
+$placeholder-text-color: lighten($input-border-color, 20%);
+
+$off-black: rgba(0, 0, 0, 0.87) !default;
+// Header Styles
+$h1-fontsize: 4.2rem !default;
+$h2-fontsize: 3.56rem !default;
+$h3-fontsize: 2.92rem !default;
+$h4-fontsize: 2.28rem !default;
+$h5-fontsize: 1.64rem !default;
+$h6-fontsize: 1.15rem !default;
+
+@import "~materialize-css/sass/components/variables";
+
+
